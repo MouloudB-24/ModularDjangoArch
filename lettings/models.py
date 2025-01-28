@@ -3,6 +3,8 @@ from django.db import models
 
 
 class Address(models.Model):
+    """Represents a physical address"""
+
     class Meta:
         verbose_name_plural = 'addresses'
 
@@ -18,6 +20,8 @@ class Address(models.Model):
 
 
 class Letting(models.Model):
+    """Represents a property lettings"""
+
     title = models.CharField(max_length=256)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
 
