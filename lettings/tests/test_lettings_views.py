@@ -49,5 +49,3 @@ def test_letting_view():
     assert response.status_code == 200
     assert "Apartment" in response.content.decode()
     assert "202 Avenue" in response.content.decode()
-
-
