@@ -1,7 +1,11 @@
+import logging
+
+import sentry_sdk
 from django.shortcuts import render
 
 from .models import Letting
 
+logger = logging.getLogger(__name__)
 
 def lettings_index(request):
     """
@@ -11,9 +15,13 @@ def lettings_index(request):
 
     :return: HttpRequest object containing the rendered template with the list of lettings.
     """
-    lettings_list = Letting.objects.all()
-    context = {'lettings_list': lettings_list}
-    return render(request, 'lettings/index.html', context)
+    try:
+        logger.info('Fetching all lettings models from the database')
+        lettings_list = Letting.objects.all()
+    except Exception as e:
+        logger.error('Error fetching lettings models')
+        sentry_sdk.capture_exception(e)
+    return render(request, 'lettings/index.html', {'lettings_list': lettings_list})
 
 
 def letting(request, letting_id):
@@ -25,9 +33,12 @@ def letting(request, letting_id):
 
     :return:HttpRequest object containing the rendered template with the letting details.
     """
-    letting = Letting.objects.get(id=letting_id)
-    context = {
-        'title': letting.title,
-        'address': letting.address,
-    }
-    return render(request, 'lettings/letting.html', context)
+    try:
+        logger.info('Fetching letting model detail from the database')
+        letting = Letting.objects.get(id=letting_id)
+    except Exception as e:
+        logger.error('Error fetching letting model')
+        sentry_sdk.capture_exception(e)
+    return render(request, 'lettings/letting.html', {'title': letting.title, 'address': letting.address})
+
+
