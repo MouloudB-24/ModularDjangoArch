@@ -13,5 +13,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copie le reste du code de l'application dans le répertoire de travail
 COPY . .
 
+# Ajoute la variable d'environnement pour Django
+ENV PYTHONUNBUFFERED=1
+
+# Collecte les fichiers statiques
+RUN python manage.py collectstatic --noinput
+
 # Définit la commande par défaut pour exécuter l'application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
