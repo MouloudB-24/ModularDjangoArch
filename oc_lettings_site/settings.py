@@ -160,9 +160,7 @@ LOGGING = {
     },
 }
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
 
 if not DEBUG:
-    from whitenoise.middleware import WhiteNoiseMiddleware
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
