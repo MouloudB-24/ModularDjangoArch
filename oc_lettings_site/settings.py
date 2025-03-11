@@ -3,6 +3,7 @@ from pathlib import Path
 
 import sentry_sdk
 from dotenv import load_dotenv
+import whitenoise
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,6 +18,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
 
 ALLOWED_HOSTS = ['ocappweb.azurewebsites.net']
 
@@ -157,3 +159,8 @@ LOGGING = {
         },
     },
 }
+
+# Middleware pour servir les fichiers statiques en prod
+if not DEBUG:
+    from whitenoise.middleware import WhiteNoiseMiddleware
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
