@@ -158,8 +158,3 @@ LOGGING = {
         },
     },
 }
-
-# Middleware pour servir les fichiers statiques en prod
-if not DEBUG:
-    from whitenoise.middleware import WhiteNoiseMiddleware
-    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
