@@ -51,7 +51,7 @@ jobs:
           name: coverage-report
           path: htmlcov/
 
-
       - name: Build Docker image
         run: |
-          docker build . --tag my-python-app:latest --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }}
+          docker build . --tag my-python-app:latest --build-arg SECRET_KEY="${{ secrets.SECRET_KEY }}"
+
