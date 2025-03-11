@@ -17,7 +17,7 @@ COPY . .
 ENV PYTHONUNBUFFERED=1
 
 # Collecte les fichiers statiques
-RUN python manage.py collectstatic --noinput
+#RUN python manage.py collectstatic --noinput
 
 # Définit la commande par défaut pour exécuter l'application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
