@@ -13,7 +13,6 @@ Welcome to OC Lettings Documentation!
    description_projet
    installation
    technologies
-   guide_utilisation
    deploiement
 
 Indices and tables
