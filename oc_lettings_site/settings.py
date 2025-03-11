@@ -1,8 +1,7 @@
 import os
-import pdb
-
 from pathlib import Path
 
+import sentry_sdk
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -121,11 +120,10 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
 # Configure Sentry
-import sentry_sdk
 load_dotenv()
 dsn = os.getenv('SENTRY_DSN')
 sentry_sdk.init(
-    dsn= dsn,
+    dsn=dsn,
     # Add data like request headers and IP for users,
     # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
     send_default_pii=True,

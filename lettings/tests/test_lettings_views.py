@@ -37,7 +37,6 @@ def test_letting_view():
     )
     letting = Letting.objects.create(title="Apartment", address=address)
 
-
     # Create a test client instance
     client = Client()
 

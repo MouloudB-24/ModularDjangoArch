@@ -7,6 +7,7 @@ from .models import Profile
 
 logger = logging.getLogger(__name__)
 
+
 def profiles_index(request):
     """
     A view function to display a list of all profiles.

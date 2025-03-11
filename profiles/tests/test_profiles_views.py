@@ -40,4 +40,3 @@ def test_profiles():
 
     assert response.status_code == 200
     assert response.context['profile'] == profile
-

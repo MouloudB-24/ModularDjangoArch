@@ -7,6 +7,7 @@ from .models import Letting
 
 logger = logging.getLogger(__name__)
 
+
 def lettings_index(request):
     """
     A view function to display a list of all lettings
@@ -39,6 +40,5 @@ def letting(request, letting_id):
     except Exception as e:
         logger.error('Error fetching letting model')
         sentry_sdk.capture_exception(e)
-    return render(request, 'lettings/letting.html', {'title': letting.title, 'address': letting.address})
-
-
+    return render(request, 'lettings/letting.html',
+                  {'title': letting.title, 'address': letting.address})

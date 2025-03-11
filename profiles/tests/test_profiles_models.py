@@ -24,6 +24,3 @@ def test_profile_str():
     profile = Profile.objects.create(user=user, favorite_city='New York')
 
     assert str(profile) == 'Emily'
-
-
-

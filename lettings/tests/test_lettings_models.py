@@ -12,7 +12,7 @@ def test_address_creation():
         street='Street hatfield',
         city='HATFIELD', state='PS',
         zip_code=1001,
-        country_iso_code='USA' )
+        country_iso_code='USA')
 
     # Checks
     assert address.number == 100
@@ -35,6 +35,7 @@ def test_address_str():
 
     assert str(address) == '100 Street hatfield'
 
+
 @pytest.mark.django_db
 def test_letting_creation():
     """Test letting creation and verify attributes"""
@@ -51,6 +52,7 @@ def test_letting_creation():
     assert letting.title == 'LettingTest'
     assert letting.address == address
 
+
 @pytest.mark.django_db
 def test_letting_str():
     """Test __str__ method of the Letting model"""
@@ -65,6 +67,3 @@ def test_letting_str():
 
     # Checks
     assert str(letting) == 'LettingTest'
-
-
-
