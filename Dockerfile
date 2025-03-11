@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Définit la commande par défaut pour exécuter l'application
-CMD ["python", "app.py"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
