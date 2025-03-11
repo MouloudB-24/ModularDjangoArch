@@ -82,6 +82,5 @@ Après chaque déploiement, vérifiez que :
 
 Bon déploiement ! 🚀
 
-# Documentation
-[![Documentation Status](https://readthedocs.org/projects/modulardjangoarch/badge/?version=latest)](https://modulardjangoarch.readthedocs.io/en/latest/)
+# Documentation clic ici (https://readthedocs.org/projects/modulardjangoarch/badge/?version=latest)](https://modulardjangoarch.readthedocs.io/en/latest/)
 
