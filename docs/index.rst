@@ -3,14 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to oc_p12_docs's documentation!
-=======================================
+Welcome to OC Lettings Documentation!
+=====================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
+   description_projet
+   installation
+   technologies
+   guide_utilisation
+   deploiement
 
 Indices and tables
 ==================
@@ -18,13 +22,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-
-- description_projet
-- installation
-- demarrage_rapide
-- technologies
-- base_donnees
-- api
-- guide_utilisation
-- deploiement
