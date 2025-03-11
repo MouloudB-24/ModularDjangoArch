@@ -1,77 +1,87 @@
-## Résumé
+# Déploiement de l'application Python avec CI/CD sur Azure
 
-Site web d'Orange County Lettings
+## 🚀 Vue d'ensemble du pipeline CI/CD
 
-## Développement local
+Le pipeline CI/CD est structuré en trois étapes principales :
 
-### Prérequis
+1. **Intégration continue (CI)** :
+   - Vérifie le code à chaque push ou pull request sur branche main.
+   - Installe les dépendances, exécute le linter (`flake8`) et lance les tests avec `pytest`.
+   - S'assure que la couverture des tests dépasse 80 %.
 
-- Compte GitHub avec accès en lecture à ce repository
-- Git CLI
-- SQLite3 CLI
-- Interpréteur Python, version 3.6 ou supérieure
+2. **Conteneurisation avec Docker** (uniquement sur la branche `main`) :
+   - Construit une image Docker de l'application.
+   - Tague l'image avec le hash du commit.
+   - Pousse l'image sur Docker Hub.
 
-Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
+3. **Déploiement sur Azure Web App** (uniquement si la conteneurisation réussit) :
+   - Récupère l'image Docker depuis Docker Hub.
+   - Déploie l'image sur Azure Web App.
+   - Vérifie que le site est accessible après le déploiement.
 
-### macOS / Linux
+---
 
-#### Cloner le repository
+## 🛠 Configuration requise
 
-- `cd /path/to/put/project/in`
-- `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
+### 1. Secrets GitHub
 
-#### Créer l'environnement virtuel
+Les variables secrètes suivantes doivent être configurées dans le dépôt GitHub :
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `python -m venv venv`
-- `apt-get install python3-venv` (Si l'étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)
-- Activer l'environnement `source venv/bin/activate`
-- Confirmer que la commande `python` exécute l'interpréteur Python dans l'environnement virtuel
-`which python`
-- Confirmer que la version de l'interpréteur Python est la version 3.6 ou supérieure `python --version`
-- Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
-- Pour désactiver l'environnement, `deactivate`
+| Secret                  | Description                           |
+|------------------------|---------------------------------------|
+| `DOCKER_USERNAME`       | Nom d'utilisateur Docker Hub         |
+| `DOCKER_PASSWORD`       | Mot de passe ou token Docker Hub     |
+| `AZURE_CREDENTIALS`     | Identifiants pour Azure (JSON)       |
+| `AZURE_APP_NAME`        | Nom de l'Azure Web App               |
+| `AZURE_PUBLISH_PROFILE` | Profil de publication Azure         |
 
-#### Exécuter le site
+### 2. Fichiers nécessaires
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pip install --requirement requirements.txt`
-- `python manage.py runserver`
-- Aller sur `http://localhost:8000` dans un navigateur.
-- Confirmer que le site fonctionne et qu'il est possible de naviguer (vous devriez voir plusieurs profils et locations).
+- `Dockerfile` : Configuration de l'image Docker.
+- `requirements.txt` : Liste des dépendances Python.
+- `.github/workflows/ci.yml` : Workflow pour l'intégration continue.
+- `.github/workflows/build.yml` : Workflow pour la conteneurisation.
+- `.github/workflows/deploy.yml` : Workflow pour le déploiement.
 
-#### Linting
+---
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `flake8`
+## 🚢 Déploiement
 
-#### Tests unitaires
+### Étapes automatiques
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pytest`
+1. **Sur une branche autre que `main` :**
+   - Le pipeline CI s'exécute : linting, tests et vérification de couverture.
 
-#### Base de données
+2. **Sur la branche `master` :**
+   - Le pipeline CI s'exécute.
+   - Si les tests sont réussis, la conteneurisation démarre.
+   - Si la conteneurisation réussit, le déploiement sur Azure est lancé.
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- Ouvrir une session shell `sqlite3`
-- Se connecter à la base de données `.open oc-lettings-site.sqlite3`
-- Afficher les tables dans la base de données `.tables`
-- Afficher les colonnes dans le tableau des profils, `pragma table_info(Python-OC-Lettings-FR_profile);`
-- Lancer une requête sur la table des profils, `select user_id, favorite_city from
-  Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
-- `.quit` pour quitter
+### Déploiement manuel local
 
-#### Panel d'administration
+Pour tester l'image Docker localement :
 
-- Aller sur `http://localhost:8000/admin`
-- Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
+```bash
+# Récupérer l'image Docker
+docker pull $DOCKER_USERNAME/my-python-app:<commit_hash>
 
-### Windows
+# Lancer le conteneur localement
+docker run --rm -d -p 8000:8000 $DOCKER_USERNAME/my-python-app:<commit_hash>
 
-Utilisation de PowerShell, comme ci-dessus sauf :
+# Accéder à l'application
+http://localhost:8000
+```
 
-- Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
-- Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+---
+
+## 📝 Remarque
+
+Après chaque déploiement, vérifiez que :
+- Les fichiers statiques sont bien chargés.
+- L'interface admin fonctionne correctement comme en local.
+
+Bon déploiement ! 🚀
+
+# Documentation
+[![Documentation Status](https://readthedocs.org/projects/modulardjangoarch/badge/?version=latest)](https://modulardjangoarch.readthedocs.io/en/latest/)
+
