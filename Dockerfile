@@ -13,6 +13,10 @@ RUN pip install --no-cache-dir -r requirements.txt gunicorn
 # Copie le reste du code de l'application dans le répertoire de travail
 COPY . .
 
+# Ajoute ARG pour récupérer la clé secrète
+ARG SECRET_KEY
+ENV SECRET_KEY=$SECRET_KEY
+
 # Collecte les fichiers statiques
 RUN python manage.py collectstatic --noinput
 
