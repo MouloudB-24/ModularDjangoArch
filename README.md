@@ -1,3 +1,7 @@
+
+# Documentation
+[![Documentation Status](https://readthedocs.org/projects/modulardjangoarch/badge/?version=latest)](https://modulardjangoarch.readthedocs.io/en/latest/)
+
 # Déploiement de l'application Python avec CI/CD sur Azure
 
 ## Pipeline CI/CD
@@ -17,7 +21,6 @@ Le pipeline CI/CD est structuré en trois étapes principales :
 3. **Déploiement sur Azure Web App** (uniquement si la conteneurisation réussit) :
    - Récupère l'image Docker depuis Docker Hub.
    - Déploie l'image sur Azure Web App.
-   - Vérifie que le site est accessible après le déploiement.
 
 ---
 
@@ -59,6 +62,3 @@ docker run --rm -d -p 8000:8000 $DOCKER_USERNAME/my-python-app:<commit_hash>
 # Accéder à l'application
 http://localhost:8000
 ```
-
-# Documentation
-[![Documentation Status](https://readthedocs.org/projects/modulardjangoarch/badge/?version=latest)](https://modulardjangoarch.readthedocs.io/en/latest/)
