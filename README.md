@@ -45,15 +45,6 @@ Les variables secrètes suivantes doivent être configurées dans le dépôt Git
 
 ---
 
-## Déploiement
-
-### Étapes automatiques
-
-1. **Sur une branche autre que `main` :**
-   - Le pipeline CI s'exécute : linting, tests et vérification de couverture.
-   - Si les tests sont réussis, la conteneurisation démarre.
-   - Si la conteneurisation réussit, le déploiement sur Azure est lancé.
-
 ### Déploiement manuel local
 
 Pour tester l'image Docker localement :
@@ -68,15 +59,6 @@ docker run --rm -d -p 8000:8000 $DOCKER_USERNAME/my-python-app:<commit_hash>
 # Accéder à l'application
 http://localhost:8000
 ```
-
----
-
-## Remarque
-
-Après chaque déploiement, vérifiez que :
-- Les fichiers statiques sont bien chargés.
-- L'interface admin fonctionne correctement comme en local.
-
 
 # Documentation
 [![Documentation Status](https://readthedocs.org/projects/modulardjangoarch/badge/?version=latest)](https://modulardjangoarch.readthedocs.io/en/latest/)
