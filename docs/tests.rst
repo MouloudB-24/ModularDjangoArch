@@ -3,7 +3,7 @@ Tests Unitaires et d'Intégration
 **Objectif qualité :** Une couverture de tests supérieure à 80 % est exigée.
 
 **Organisation des tests :**
- - Chaque application (lettings, profiles) contient ses propres tests unitaires et d’intégration.
+ - Chaque application (lettings, profiles) contient ses propres tests unitaires.
  - Les tests couvrent les vues, les URLs et les modèles.
 
 **Outils :**

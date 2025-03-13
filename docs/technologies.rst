@@ -5,11 +5,11 @@ Technologies et langages de programmation utilisés
 
 - Langage principal : Python 3.12
 
-- Framework web : Django 4.x
+- Framework web : Django 3.0
 
-- Base de données : SQLite en local, PostgreSQL en production
+- Base de données : SQLite
 
-- Conteneurisation : Docker et Docker Compose
+- Conteneurisation : Docker
 
 - CI/CD : GitHub Actions
 
@@ -20,6 +20,3 @@ Technologies et langages de programmation utilisés
 - Gestion des versions : Git
 
 - Hébergement : Azure Web App
-
-Ces technologies ont été choisies pour leur robustesse, leur flexibilité et leur intégration facile dans les pipelines
-de déploiement modernes.
