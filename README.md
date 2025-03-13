@@ -1,6 +1,6 @@
 # Déploiement de l'application Python avec CI/CD sur Azure
 
-## 🚀 Vue d'ensemble du pipeline CI/CD
+## Pipeline CI/CD
 
 Le pipeline CI/CD est structuré en trois étapes principales :
 
@@ -21,7 +21,7 @@ Le pipeline CI/CD est structuré en trois étapes principales :
 
 ---
 
-## 🛠 Configuration requise
+## Configuration requise
 
 ### 1. Secrets GitHub
 
@@ -45,15 +45,12 @@ Les variables secrètes suivantes doivent être configurées dans le dépôt Git
 
 ---
 
-## 🚢 Déploiement
+## Déploiement
 
 ### Étapes automatiques
 
 1. **Sur une branche autre que `main` :**
    - Le pipeline CI s'exécute : linting, tests et vérification de couverture.
-
-2. **Sur la branche `master` :**
-   - Le pipeline CI s'exécute.
    - Si les tests sont réussis, la conteneurisation démarre.
    - Si la conteneurisation réussit, le déploiement sur Azure est lancé.
 
@@ -74,13 +71,12 @@ http://localhost:8000
 
 ---
 
-## 📝 Remarque
+## Remarque
 
 Après chaque déploiement, vérifiez que :
 - Les fichiers statiques sont bien chargés.
 - L'interface admin fonctionne correctement comme en local.
 
-Bon déploiement ! 🚀
 
 # Documentation
 [![Documentation Status](https://readthedocs.org/projects/modulardjangoarch/badge/?version=latest)](https://modulardjangoarch.readthedocs.io/en/latest/)
