@@ -3,7 +3,8 @@ Déploiement et Gestion de l'Application
 
 **Pipeline CI/CD**
 
-Le projet utilise GitHub Actions pour l'intégration et le déploiement continus. À chaque push sur la branche main, le pipeline s'exécute en trois étapes :
+Le projet utilise GitHub Actions pour l'intégration et le déploiement continus. À chaque push sur la branche main,
+le pipeline s'exécute en trois étapes :
 
 1. Build et Push de l'image Docker sur Docker Hub
 

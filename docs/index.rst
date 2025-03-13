@@ -13,6 +13,10 @@ Welcome to OC Lettings Documentation!
    description_projet
    installation
    technologies
+   architecture_modulaire
+   gestion_des _erreurs
+   tests
+   pipeline_cicd
    deploiement
 
 Indices and tables
