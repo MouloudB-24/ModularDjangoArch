@@ -1,6 +1,5 @@
-
 # Documentation
-[Documentation Status](https://readthedocs.org/projects/modulardjangoarch/badge/?version=latest)](https://modulardjangoarch.readthedocs.io/en/latest/)
+[![Documentation Status](https://readthedocs.org/projects/modulardjangoarch/badge/?version=latest)](https://modulardjangoarch.readthedocs.io/en/latest/)
 
 # Déploiement de l'application Python avec CI/CD sur Azure
 
