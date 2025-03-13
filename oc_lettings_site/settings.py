@@ -164,3 +164,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
 
 if not DEBUG:
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
+handler404 = 'django.views.defaults.page_not_found'
+handler500 = 'django.views.defaults.server_error'
